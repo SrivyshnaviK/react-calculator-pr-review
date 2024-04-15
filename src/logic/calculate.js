@@ -125,6 +125,20 @@ export default function calculate(obj, buttonName) {
     return { operation: buttonName };
   }
 
+  if (buttonName === "←") { // Backspace functionality
+    if (obj.next) {
+      return { next: obj.next.slice(0, -1) };
+    }
+    return {};
+  }
+
+  if (buttonName === "√") { // Square root functionality
+    if (obj.next) {
+      return { next: Big(obj.next).sqrt().toString() };
+    }
+    return {};
+  }
+
   // save the operation and shift 'next' into 'total'
   return {
     total: obj.next,
